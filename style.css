@@ -1,0 +1,106 @@
+body{
+margin:0;
+font-family: Arial;
+background:#121212;
+color:white;
+}
+
+/* 🔥 الهيدر */
+.header{
+background:#2b1d0e;
+text-align:center;
+padding:20px;
+border-bottom:2px solid silver;
+}
+
+.header h1{
+margin:0;
+font-size:24px;
+color:#fff;
+}
+
+.header p{
+margin:5px 0 0 0;
+color:#cfcfcf;
+}
+
+/* 🔥 الأقسام */
+.categories{
+display:flex;
+overflow-x:auto;
+background:#111;
+padding:10px;
+gap:10px;
+}
+
+.categories button{
+background:silver;
+border:none;
+padding:10px;
+min-width:120px;
+cursor:pointer;
+border-radius:8px;
+font-weight:bold;
+}
+
+/* 🔥 المنتجات */
+.products{
+padding:10px;
+display:grid;
+grid-template-columns:1fr;
+gap:10px;
+}
+
+.product{
+background:#1f1f1f;
+padding:10px;
+border-radius:12px;
+border:1px solid #333;
+}
+
+.product img{
+width:100%;
+border-radius:10px;
+}
+
+.product h3{
+margin:10px 0 5px;
+}
+
+.product p{
+color:#aaa;
+}
+
+/* 🔥 زر */
+.product button{
+width:100%;
+padding:10px;
+background:silver;
+border:none;
+cursor:pointer;
+border-radius:8px;
+font-weight:bold;
+}
+
+/* 🔥 السلة */
+.cart-bar{
+position:fixed;
+bottom:0;
+left:0;
+right:0;
+background:#000;
+padding:10px;
+border-top:2px solid silver;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.cart-bar button{
+background:#25d366;
+border:none;
+padding:10px;
+color:white;
+font-weight:bold;
+border-radius:8px;
+}
