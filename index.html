@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>الفخامة للشيش والمعسلات</title>
+
+<style>
+body {
+  margin:0;
+  font-family: Arial;
+  background:#1b1b1b;
+  color:#fff;
+}
+
+header {
+  background:#2b1d0e;
+  padding:15px;
+  text-align:center;
+  font-size:22px;
+  font-weight:bold;
+}
+
+nav {
+  display:flex;
+  overflow-x:auto;
+  background:#111;
+}
+
+nav button {
+  flex:1;
+  padding:10px;
+  background:none;
+  border:none;
+  color:white;
+  cursor:pointer;
+}
+
+.container {
+  padding:10px;
+}
+
+.product {
+  background:#2a2a2a;
+  margin:10px 0;
+  padding:10px;
+  border-radius:10px;
+}
+
+.product img {
+  width:100%;
+  border-radius:10px;
+}
+
+button {
+  padding:10px;
+  border:none;
+  background:silver;
+  cursor:pointer;
+  margin-top:5px;
+  width:100%;
+}
+
+.cart {
+  background:#111;
+  padding:10px;
+  position:fixed;
+  bottom:0;
+  width:100%;
+}
+
+.cart button {
+  background:#25d366;
+  color:white;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+الفخامة للشيش والمعسلات
+</header>
+
+<nav>
+<button onclick="filter('all')">الكل</button>
+<button onclick="filter('شيش فحم')">شيش فحم</button>
+<button onclick="filter('شيش الكتروني')">شيش الكتروني</button>
+<button onclick="filter('معسلات')">معسلات</button>
+</nav>
+
+<div class="container" id="products"></div>
+
+<div class="cart">
+<div id="cartText">السلة فارغة</div>
+<button onclick="checkout()">إرسال الطلب واتساب</button>
+</div>
+
+<script>
+let cart = [];
+
+const products = [
+{
+name:"شيشة فاخرة",
+cat:"شيش فحم",
+price:500,
+img:"https://via.placeholder.com/300"
+},
+{
+name:"شيشة إلكترونية",
+cat:"شيش الكتروني",
+price:300,
+img:"https://via.placeholder.com/300"
+},
+{
+name:"معسل تفاحتين",
+cat:"معسلات",
+price:50,
+img:"https://via.placeholder.com/300"
+}
+];
+
+function show(list){
+let html="";
+list.forEach(p=>{
+html+=`
+<div class="product">
+<img src="${p.img}">
+<h3>${p.name}</h3>
+<p>${p.price} ريال</p>
+<button onclick='add("${p.name}",${p.price})'>إضافة للسلة</button>
+</div>
+`;
+});
+document.getElementById("products").innerHTML=html;
+}
+
+show(products);
+
+function filter(cat){
+if(cat==="all") show(products);
+else show(products.filter(p=>p.cat===cat));
+}
+
+function add(name,price){
+cart.push({name,price});
+updateCart();
+}
+
+function updateCart(){
+if(cart.length===0){
+document.getElementById("cartText").innerText="السلة فارغة";
+return;
+}
+
+let text="";
+cart.forEach(c=>{
+text+=c.name+" - "+c.price+" ريال\n";
+});
+document.getElementById("cartText").innerText=text;
+}
+
+function checkout(){
+let msg="طلب جديد من الموقع:\n\n";
+cart.forEach(c=>{
+msg+=c.name+" - "+c.price+" ريال\n";
+});
+
+let phone="967776661607"; // حط رقمك هنا
+window.open("https://wa.me/"+phone+"?text="+encodeURIComponent(msg));
+}
+</script>
+
+</body>
+</html>
